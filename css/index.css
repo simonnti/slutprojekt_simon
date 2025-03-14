@@ -14,26 +14,24 @@ header {
     padding: 15px;
     background-color: #333;
     font-family: 'Raleway', sans-serif;
+    position: relative;
 }
 
 .nav-toggle {
     font-size: 24px;
     cursor: pointer;
+    display: none;
 }
 
 .nav-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #333;
-    padding: 10px;
-    border-radius: 5px;
+    display: flex;
 }
 
 .nav-menu ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-menu ul li {
@@ -50,30 +48,43 @@ header {
     position: relative;
     height: 300px;
     background: url('../img/hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
     font-size: 24px;
     color: #00bcd4;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
     padding: 10px;
     border-radius: 5px;
     font-family: 'Raleway', sans-serif;
+    text-align: center;
 }
 
 .content {
     display: flex;
     padding: 20px;
+    gap: 20px;
 }
 
-.main-content {
-    flex: 2;
-    background: #444;
-    padding: 20px;
-    margin-right: 20px;
+.image-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 500px;
+    height: 350px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.image-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .sidebar {
@@ -93,4 +104,49 @@ footer {
     background: #333;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #333;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+    }
+
+    .nav-menu ul li {
+        padding: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-carousel {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .sidebar {
+        text-align: left;
+    }
 }
