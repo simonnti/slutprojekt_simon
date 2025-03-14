@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karla Tower - Gothenburg</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+    <style>
+        .image-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            max-width: 600px;
+            height: 400px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .image-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Crop images to fit without stretching */
+            border-radius: 10px;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Karla Tower</h1>
+        <div class="nav-toggle" id="nav-toggle">
+            &#9776;
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-image" style="background-image: url('../img/hero.jpg');"></div>
+        <h2 class="title">A Tower That Touches the Sky</h2>
+    </section>
+    <main>
+        <section class="content">
+            <div class="image-carousel">
+                <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+                <img id="carousel-image" src="../img/karla-tower1.jpg" alt="Karla Tower in Gothenburg">
+                <button class="next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+            <aside class="sidebar">
+                <h3>Construction Progress</h3>
+                <ul id="technical-info">
+                    <li>March 2022: Construction commenced with foundation work.</li>
+                    <li>Excavation depth: 20 meters.</li>
+                    <li>Initial concrete pour for structural base.</li>
+                </ul>
+            </aside>
+        </section>
+        <article>
+            <h3>An Icon in the Sky</h3>
+            <p>Soaring high above the city, the Karla Tower redefines the skyline of Gothenburg. It is more than just a
+                building—it is a statement, a marvel of engineering, and a testament to human ingenuity. Rising to
+                breathtaking heights,
+                it is an emblem of human creativity, seamlessly blending modern aesthetics with structural brilliance.
+            </p>
+            <p>Visitors from all over the world come to witness its splendor, marveling at the intricate details that
+                make it one of the most iconic buildings in Scandinavia. Whether bathed in the golden hues of sunrise or
+                illuminated against the night sky, the Karla Tower stands as a proud beacon of innovation and
+                excellence.</p>
+        </article>
+    </main>
+    <footer>
+        <p>Experience the height of innovation. Visit the Karla Tower today.</p>
+    </footer>
+    <script>
+        let images = [
+            "../img/karla-tower1.jpg",
+            "../img/karla-tower2.jpg",
+            "../img/karla-tower3.jpg"
+        ];
+        let technicalInfo = [
+            ["March 2022: Construction commenced with foundation work.", "Excavation depth: 20 meters.", "Initial concrete pour for structural base."],
+            ["April 2022: Became the tallest building on the north side of the Göta River just 5 months later.", "Height reached: 125 meters.", "Construction of 'the twist' started."],
+            ["April 2023: Height reached: 245 meters.", "Building would be fully externally completed next year."]
+        ];
+        let currentIndex = 0;
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            document.getElementById("carousel-image").src = images[currentIndex];
+            updateTechnicalInfo();
+        }
+
+        function updateTechnicalInfo() {
+            let infoList = document.getElementById("technical-info");
+            infoList.innerHTML = "";
+            technicalInfo[currentIndex].forEach(info => {
+                let listItem = document.createElement("li");
+                listItem.textContent = info;
+                infoList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+
+</html>
