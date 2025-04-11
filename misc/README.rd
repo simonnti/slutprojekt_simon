@@ -30,7 +30,7 @@ A modern and responsive website dedicated to the Karla Tower in Gothenburg, Swed
 ## 📁 File Structure
 
 ```
-project-root/
+slutprojekt_simon/
 │
 ├── css/
 │   ├── index.css
